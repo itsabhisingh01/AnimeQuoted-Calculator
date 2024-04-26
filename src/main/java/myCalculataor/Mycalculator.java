@@ -43,7 +43,8 @@ public class Mycalculator extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
+		// Getting/Taking the input from the user
 		String str1 = request.getParameter("num1");
 		String str2 = request.getParameter("num2");
 		String str3 = request.getParameter("bt1");
@@ -53,10 +54,20 @@ public class Mycalculator extends HttpServlet {
 		int num2 = Integer.parseInt(str2);
 		
 		int ans;
-		if(str3.equals("1")) ans = num1+num2;
-		else if(str3.equals("2")) ans = num1-num2;
-		else if(str3.equals("3")) ans = num1*num2;
-		else  ans = num1/num2;
+
+		switch (str3) {
+		    case "1":
+		        ans = num1 + num2;
+		        break;
+		    case "2":
+		        ans = num1 - num2;
+		        break;
+		    case "3":
+		        ans = num1 * num2;
+		        break;
+		    default:
+		        ans = num1 / num2;
+		}
 		
 		// For generating random quotes
 		int randomIndex = (int) (Math.random()*quotes.length);
